@@ -15,9 +15,9 @@ configuration read_configuration() {
     conf.n_large_grid = j["n_large_grid"];
     conf.boxsize = j["boxsize"];
     
-    conf.ri = j["ri"];
-    conf.shell_width = j["shell_width"];
-    conf.r_max = j["r_max"];
+    conf.reduced_ri = j["ri"];
+    conf.reduced_shell_width = j["shell_width"];
+    conf.reduced_r_max = j["r_max"];
     
     conf.RvMax = j["RvMax"];
     conf.RvMin = j["RvMin"];
@@ -32,11 +32,9 @@ configuration read_configuration() {
     conf.Ndens = pow(conf.n_large_grid, 3);
     conf.cell_side_size = conf.boxsize / conf.n_large_grid;
     
-    conf.n_shells = (conf.r_max - conf.ri) / conf.shell_width;
-    conf.rf = conf.ri + (conf.n_shells - 1) * conf.shell_width;
+    conf.n_shells = (conf.reduced_r_max - conf.reduced_ri) / conf.reduced_shell_width;
+    conf.reduced_rf = conf.reduced_ri + (conf.n_shells - 1) * conf.reduced_shell_width;
     
-    conf.n_small_grid = 2 * trunc(conf.r_max / conf.cell_side_size) + 3;
-
     return conf;
 }
 
@@ -47,9 +45,9 @@ void print_configuration(configuration conf) {
     std::cout<<"n_voids="<<conf.n_voids<<"\n";
     std::cout<<"n_large_grid="<<conf.n_large_grid<<"\n";
     std::cout<<"boxsize="<<conf.boxsize<<"\n";
-    std::cout<<"ri="<<conf.ri<<"\n";
-    std::cout<<"shell_width="<<conf.shell_width<<"\n";
-    std::cout<<"r_max="<<conf.r_max<<"\n";
+    std::cout<<"ri="<<conf.reduced_ri<<"\n";
+    std::cout<<"shell_width="<<conf.reduced_shell_width<<"\n";
+    std::cout<<"r_max="<<conf.reduced_r_max<<"\n";
     std::cout<<"min void radius="<<conf.RvMin<<"\n";
     std::cout<<"max void radius="<<conf.RvMax<<"\n";
     std::cout<<"density file name="<<conf.densfilename<<"\n";

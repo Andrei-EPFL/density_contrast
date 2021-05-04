@@ -1,15 +1,15 @@
 {
-    "n_voids": 10000,
+    "n_voids": 1000,
 
     "n_large_grid": 1024,
     "boxsize": 2500,
 
-    "ri": 0.0,
-    "shell_width": 4,
-    "r_max": 40.0,
+    "reduced_ri": 0.0,
+    "reduced_shell_width": 0.25,
+    "reduced_r_max": 2.5,
 
     "RvMax": 18,
-    "RvMin": 16.5,
+    "RvMin": 16,
 
     "densfilename": "/hpcstorage/variu/FULL_0_2500/linearnw_CIC/patchy_cmass_like/fix_ampl/box1/G1024_mesh/binary_dens_single_G1024CIC_FAC0.075_BS2500_S1000300_highest_6214031.dat",
     "voidfilename": "/hpcstorage/variu/FULL_0_2500/linearnw_CIC/patchy_cmass_like/fix_ampl/box1/G1024_mesh/binary_voids_single_G1024CIC_FAC0.075_BS2500_S1000300_highest_6214031.dat", 

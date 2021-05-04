@@ -70,6 +70,7 @@ int main() {
         std::vector<float> mass(conf.n_shells, 0);
         std::size_t idx;
         int layer;
+        float r_max;
         std::vector<float> l_density_profile_voids(conf.n_shells, 0), l_density2_profile_voids(conf.n_shells, 0);
 
 #ifdef OMP
@@ -80,6 +81,9 @@ int main() {
             voids_ijk[0] = round(voids[i][0] / conf.cell_side_size);
             voids_ijk[1] = round(voids[i][1] / conf.cell_side_size);
             voids_ijk[2] = round(voids[i][2] / conf.cell_side_size);
+            r_max = voids[i][3] * conf.reduced_r_max;
+            conf.n_small_grid = 2 * trunc(conf.r_max / conf.cell_side_size) + 3;
+
             for(std::size_t j = 0; j < pow(conf.n_small_grid, 3); j++) { 
                 
                 index_mesh2ijk(j, small_mesh_ijk, conf.n_small_grid);
