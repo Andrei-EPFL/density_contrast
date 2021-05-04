@@ -25,13 +25,14 @@ int main() {
     std::cout<<"Status: Configuration successfully read...\n";
     print_configuration(conf);
 
-    return 0;
     std::cout<<"2. Status: Reading the density field...\n";
     float *density;
     //init_density(conf, &density);
     std::chrono::steady_clock sc;
     auto start = sc.now();
-    read_density<float>(conf.densfilename, conf, &density);
+    if (read_density<float>(conf.densfilename, conf, &density) == -1) {
+        return -1;
+    }
     auto end = sc.now();
     auto time_span = static_cast<std::chrono::duration<double>>(end - start);
     std::cout<<"INFO: It took "<<time_span.count()<<" seconds to read the density!\n";

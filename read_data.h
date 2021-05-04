@@ -55,6 +55,10 @@ int read_density(std::string filename, configuration conf, T **dens) {
         infile.read(bytes, conf.Ndens * sizeof(T));
         infile.close();
     }
+    else {
+        std::cout<<"ERROR: the binary file was not loaded\n";
+	return -1;
+    }
     *dens = reinterpret_cast<T*>(bytes);
 
     return 0;
